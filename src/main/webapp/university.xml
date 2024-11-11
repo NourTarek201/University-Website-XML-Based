@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<University>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><University>
     <Student ID="20200134">
         <FirstName>Ahmed</FirstName>
         <LastName>Mohamed</LastName>
@@ -8,4 +7,4 @@
         <Level>4</Level>
         <Address>Giza</Address>
     </Student>
-</University>
+<Student ID="20210050"><FirstName>Adham</FirstName><LastName>Khaled</LastName><Gender>male</Gender><GPA>3.06</GPA><Level>2</Level><Address>1</Address></Student><Student ID="20210050"><FirstName>Adham</FirstName><LastName>Khaled</LastName><Gender>male</Gender><GPA>3.06</GPA><Level>2</Level><Address>1</Address></Student><Student ID="20210050"><FirstName>Adham</FirstName><LastName>Khaled</LastName><Gender>male</Gender><GPA>3.06</GPA><Level>2</Level><Address>1</Address></Student></University>
