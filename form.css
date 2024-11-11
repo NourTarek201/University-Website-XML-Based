@@ -1,0 +1,80 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body styling */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url("background.png");
+    background-size: cover;      /* Cover the entire background */
+    background-repeat: no-repeat; /* Prevent repeating the image */
+    background-position: center;  /* Center the image */
+}
+
+/* Form container */
+.form-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form title */
+.form-container h2 {
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+/* Form label */
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: bold;
+}
+
+/* Form input fields */
+input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Submit button */
+.submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #2f79a7;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #47afef;
+}
+
+/* Responsive styling */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 1.5rem;
+    }
+}
