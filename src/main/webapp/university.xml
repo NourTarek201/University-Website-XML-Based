@@ -1,10 +1,3 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><University>
-    <Student ID="20200134">
-        <FirstName>Ahmed</FirstName>
-        <LastName>Mohamed</LastName>
-        <Gender>Male</Gender>
-        <GPA>3.17</GPA>
-        <Level>4</Level>
-        <Address>Giza</Address>
-    </Student>
-<Student ID="20210050"><FirstName>Adham</FirstName><LastName>Khaled</LastName><Gender>male</Gender><GPA>3.06</GPA><Level>2</Level><Address>1</Address></Student><Student ID="20210050"><FirstName>Adham</FirstName><LastName>Khaled</LastName><Gender>male</Gender><GPA>3.06</GPA><Level>2</Level><Address>1</Address></Student><Student ID="20210050"><FirstName>Adham</FirstName><LastName>Khaled</LastName><Gender>male</Gender><GPA>3.06</GPA><Level>2</Level><Address>1</Address></Student></University>
+    
+<Student ID="20210050"><FirstName>Adham</FirstName><LastName>Khaled</LastName><Gender>male</Gender><GPA>3.06</GPA><Level>2</Level><Address>1</Address></Student><Student ID="20210050"><FirstName>Adham</FirstName><LastName>Khaled</LastName><Gender>male</Gender><GPA>3.06</GPA><Level>2</Level><Address>1</Address></Student><Student ID="265496"><FirstName>gvycyf</FirstName><LastName>vkjcghjvgc</LastName><Gender>female</Gender><GPA>2.3</GPA><Level>3</Level><Address>gviugv</Address></Student><Student ID="125966"><FirstName>habiba</FirstName><LastName>iaba</LastName><Gender>female</Gender><GPA>2.3</GPA><Level>4</Level><Address>hbaofihb</Address></Student></University>
