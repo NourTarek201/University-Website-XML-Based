@@ -18,6 +18,7 @@ import org.w3c.dom.*;
 
 @WebServlet(name = "deletestudent", value = "/remove-student")
 public class DeleteStudent extends HttpServlet {
+    private String path = "C:\\Users\\IDEAPAD GAMING\\IdeaProjects\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.sendRedirect("deleteStudent.html");
@@ -33,7 +34,7 @@ public class DeleteStudent extends HttpServlet {
         }
 
         try {
-            File xmlFile = new File("C:\\Users\\G-15\\OneDrive\\Documents\\GitHub\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml");
+            File xmlFile = new File(path);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
@@ -69,7 +70,6 @@ public class DeleteStudent extends HttpServlet {
                 PrintWriter out = resp.getWriter();
                 out.println("<html><body>");
                 out.println("<head><link rel=\"stylesheet\" href=\"form.css\"></head>");
-                out.println("<p> User Added </p>");
                 out.println("<a href=\"./\"> home page </a>");
                 out.println("</body></html>");
             } else {

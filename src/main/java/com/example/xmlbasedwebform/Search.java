@@ -14,6 +14,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.*;
 @WebServlet(name = "search", value = "/search")
 public class Search extends HttpServlet {
+    private String path = "C:\\Users\\IDEAPAD GAMING\\IdeaProjects\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,7 +29,7 @@ public class Search extends HttpServlet {
         String gpaSearch = request.getParameter("gpa");
 
         try {
-            File xmlFile = new File("C:\\Users\\G-15\\OneDrive\\Documents\\GitHub\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml");
+            File xmlFile = new File(path);
 
             // Initialize the XML document parser
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -80,7 +81,6 @@ public class Search extends HttpServlet {
             PrintWriter out = response.getWriter();
             out.println("<html><body>");
             out.println("<head><link rel=\"stylesheet\" href=\"form.css\"></head>");
-            out.println("<p> User Added </p>");
             out.println("<a href=\"./\"> home page </a>");
             out.println("</body></html>");
         } catch (Exception e) {
