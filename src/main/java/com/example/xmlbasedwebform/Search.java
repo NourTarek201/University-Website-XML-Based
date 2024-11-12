@@ -17,7 +17,6 @@ public class Search extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Redirect to the allStudents page
         response.sendRedirect("Search.html");
     }
 
@@ -37,20 +36,16 @@ public class Search extends HttpServlet {
             Document doc = dBuilder.parse(xmlFile);
             doc.getDocumentElement().normalize(); // Normalize the XML document
 
-            // Get all student elements from the XML
             NodeList studentList = doc.getElementsByTagName("Student");
 
-            // Prepare the response writer and output the table headers
             response.getWriter().println("<html><body><h2>All Students</h2><table border='1' id='isoutput'><tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Gender</th><th>GPA</th><th>Level</th><th>Address</th></tr>");
 
-            // Loop through all students and display their information
             for (int i = 0; i < studentList.getLength(); i++) {
                 Node studentNode = studentList.item(i);
 
                 if (studentNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element studentElement = (Element) studentNode;
 
-                    // Extract student details
                     String id = studentElement.getAttribute("ID");
                     String firstName = studentElement.getElementsByTagName("FirstName").item(0).getTextContent();
                     String lastName = studentElement.getElementsByTagName("LastName").item(0).getTextContent();
@@ -59,7 +54,6 @@ public class Search extends HttpServlet {
                     String level = studentElement.getElementsByTagName("Level").item(0).getTextContent();
                     String address = studentElement.getElementsByTagName("Address").item(0).getTextContent();
 
-                    // Apply the filters if search parameters are provided
                     boolean matchesSearch = true;
                     if (firstNameSearch != null && !firstNameSearch.isEmpty() && !firstName.toLowerCase().contains(firstNameSearch.toLowerCase())) {
                         matchesSearch = false;
@@ -68,7 +62,6 @@ public class Search extends HttpServlet {
                         matchesSearch = false;
                     }
 
-                    // If the student matches the search criteria, display their information
                     if (matchesSearch) {
                         response.getWriter().println("<tr>");
                         response.getWriter().println("<td>" + id + "</td>");

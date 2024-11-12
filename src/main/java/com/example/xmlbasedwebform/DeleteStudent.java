@@ -33,16 +33,12 @@ public class DeleteStudent extends HttpServlet {
         }
 
         try {
-            // Load the XML file
             File xmlFile = new File("C:\\Users\\G-15\\OneDrive\\Documents\\GitHub\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
-
-            // Normalize the XML structure
             doc.getDocumentElement().normalize();
 
-            // Use XPath to find the student with the given ID
             NodeList studentList = doc.getElementsByTagName("Student");
             boolean studentFound = false;
 
@@ -54,7 +50,7 @@ public class DeleteStudent extends HttpServlet {
                     String id = studentElement.getAttribute("ID");
 
                     if (id.equals(studentID)) {
-                        studentElement.getParentNode().removeChild(studentNode);  // Remove the student element
+                        studentElement.getParentNode().removeChild(studentNode);
                         studentFound = true;
                         break;
                     }
@@ -62,7 +58,6 @@ public class DeleteStudent extends HttpServlet {
             }
 
             if (studentFound) {
-                // Save the modified XML back to the file
                 TransformerFactory transformerFactory = TransformerFactory.newInstance();
                 Transformer transformer = transformerFactory.newTransformer();
                 DOMSource source = new DOMSource(doc);
