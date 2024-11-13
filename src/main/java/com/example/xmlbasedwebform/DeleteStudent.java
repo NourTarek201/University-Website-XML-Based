@@ -18,7 +18,8 @@ import org.w3c.dom.*;
 
 @WebServlet(name = "deletestudent", value = "/remove-student")
 public class DeleteStudent extends HttpServlet {
-    private String path = "C:\\Users\\IDEAPAD GAMING\\IdeaProjects\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml";
+    private String path = "C:\\Users\\G-15\\OneDrive\\Documents\\GitHub\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml";
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.sendRedirect("deleteStudent.html");
@@ -58,6 +59,13 @@ public class DeleteStudent extends HttpServlet {
                 }
             }
 
+            resp.setContentType("text/html");
+            PrintWriter out = resp.getWriter();
+            out.println("<html><body>");
+            out.println("<head><link rel=\"stylesheet\" href=\"form.css\"></head>");
+            out.println("<div style=\"display: flex; justify-content: center; align-items: center; height: 100vh;\">");
+            out.println("<div style=\"text-align: center;\">");
+
             if (studentFound) {
                 TransformerFactory transformerFactory = TransformerFactory.newInstance();
                 Transformer transformer = transformerFactory.newTransformer();
@@ -65,16 +73,14 @@ public class DeleteStudent extends HttpServlet {
                 StreamResult result = new StreamResult(xmlFile);
                 transformer.transform(source, result);
 
-                resp.getWriter().write("Student with ID " + studentID + " has been deleted successfully.");
-                resp.setContentType("text/html");
-                PrintWriter out = resp.getWriter();
-                out.println("<html><body>");
-                out.println("<head><link rel=\"stylesheet\" href=\"form.css\"></head>");
-                out.println("<a href=\"./\"> home page </a>");
-                out.println("</body></html>");
+                out.println("<p>Student with ID " + studentID + " has been deleted successfully.</p>");
             } else {
-                resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Student not found with ID: " + studentID);
+                out.println("<p>No student found with ID: " + studentID + ".</p>");
             }
+
+            out.println("<a href=\"./\" class=\"submit-btn\" style=\"display: inline-block; padding: 10px 20px; margin-top: 15px; text-decoration: none; \">Home Page</a>");
+            out.println("</div></div>");
+            out.println("</body></html>");
         } catch (Exception e) {
             e.printStackTrace();
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error processing the request.");

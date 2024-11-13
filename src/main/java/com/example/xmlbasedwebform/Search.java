@@ -12,15 +12,15 @@ import java.io.PrintWriter;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.*;
+
 @WebServlet(name = "search", value = "/search")
 public class Search extends HttpServlet {
-    private String path = "C:\\Users\\IDEAPAD GAMING\\IdeaProjects\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml";
+    private String path = "C:\\Users\\G-15\\OneDrive\\Documents\\GitHub\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.sendRedirect("Search.html");
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
@@ -30,8 +30,6 @@ public class Search extends HttpServlet {
 
         try {
             File xmlFile = new File(path);
-
-            // Initialize the XML document parser
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
@@ -42,6 +40,8 @@ public class Search extends HttpServlet {
             out.println("<html><body>");
             out.println("<head><link rel=\"stylesheet\" href=\"form.css\"></head>");
             out.println("<div class=\"form-container\"><a href=\"./\" class=\"submit-btn\"> home page </a><h2>All Students</h2><table border='1' id='isoutput'><tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Gender</th><th>GPA</th><th>Level</th><th>Address</th></tr>");
+
+            boolean studentFound = false;
 
             for (int i = 0; i < studentList.getLength(); i++) {
                 Node studentNode = studentList.item(i);
@@ -66,23 +66,26 @@ public class Search extends HttpServlet {
                     }
 
                     if (matchesSearch) {
-                        response.getWriter().println("<tr>");
-                        response.getWriter().println("<td>" + id + "</td>");
-                        response.getWriter().println("<td>" + firstName + "</td>");
-                        response.getWriter().println("<td>" + lastName + "</td>");
-                        response.getWriter().println("<td>" + gender + "</td>");
-                        response.getWriter().println("<td>" + gpa + "</td>");
-                        response.getWriter().println("<td>" + level + "</td>");
-                        response.getWriter().println("<td>" + address + "</td>");
-                        response.getWriter().println("</tr>");
+                        studentFound = true;
+                        out.println("<tr>");
+                        out.println("<td>" + id + "</td>");
+                        out.println("<td>" + firstName + "</td>");
+                        out.println("<td>" + lastName + "</td>");
+                        out.println("<td>" + gender + "</td>");
+                        out.println("<td>" + gpa + "</td>");
+                        out.println("<td>" + level + "</td>");
+                        out.println("<td>" + address + "</td>");
+                        out.println("</tr>");
                     }
                 }
+            }
+            if (!studentFound) {
+                out.println("<tr><td colspan='7'>Student not found</td></tr>");
             }
             out.println("</table></div></body></html>");
         } catch (Exception e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error processing the request.");
         }
-
     }
 }

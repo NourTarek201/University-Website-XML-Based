@@ -20,7 +20,7 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "showstudents", value = "/show-students")
 public class ShowStudents extends HttpServlet {
-    private String path = "C:\\Users\\IDEAPAD GAMING\\IdeaProjects\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml";
+    private String path = "C:\\Users\\G-15\\OneDrive\\Documents\\GitHub\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
