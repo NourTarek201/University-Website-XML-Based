@@ -38,8 +38,10 @@ public class Search extends HttpServlet {
             doc.getDocumentElement().normalize(); // Normalize the XML document
 
             NodeList studentList = doc.getElementsByTagName("Student");
-
-            response.getWriter().println("<html><body><h2>All Students</h2><table border='1' id='isoutput'><tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Gender</th><th>GPA</th><th>Level</th><th>Address</th></tr>");
+            PrintWriter out = response.getWriter();
+            out.println("<html><body>");
+            out.println("<head><link rel=\"stylesheet\" href=\"form.css\"></head>");
+            out.println("<div class=\"form-container\"><a href=\"./\" class=\"submit-btn\"> home page </a><h2>All Students</h2><table border='1' id='isoutput'><tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Gender</th><th>GPA</th><th>Level</th><th>Address</th></tr>");
 
             for (int i = 0; i < studentList.getLength(); i++) {
                 Node studentNode = studentList.item(i);
@@ -76,13 +78,7 @@ public class Search extends HttpServlet {
                     }
                 }
             }
-            response.getWriter().println("</table></body></html>");
-            response.setContentType("text/html");
-            PrintWriter out = response.getWriter();
-            out.println("<html><body>");
-            out.println("<head><link rel=\"stylesheet\" href=\"form.css\"></head>");
-            out.println("<a href=\"./\"> home page </a>");
-            out.println("</body></html>");
+            out.println("</table></div></body></html>");
         } catch (Exception e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error processing the request.");

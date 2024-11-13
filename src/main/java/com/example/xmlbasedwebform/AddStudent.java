@@ -109,12 +109,6 @@ public class AddStudent extends HttpServlet {
         writeXML(document);
 
 
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<head><link rel=\"stylesheet\" href=\"form.css\"></head>");
-        out.println("<p> User Added </p>");
-        out.println("<a href=\"./\"> home page </a>");
-        out.println("</body></html>");
+        response.sendRedirect("./add-student");
     }
 }

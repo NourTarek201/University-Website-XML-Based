@@ -27,7 +27,8 @@ public class ShowStudents extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
         out.println("<head><link rel=\"stylesheet\" href=\"form.css\"></head>");
-        response.getWriter().println("<html><body><h2>All Students</h2><table border='1' id='isoutput'><tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Gender</th><th>GPA</th><th>Level</th><th>Address</th></tr>");
+        out.println("<div class=\"form-container\"><a href=\"./\" class=\"submit-btn\"> home page </a><h2>All Students</h2>");
+        out.println("<table border='1' id='isoutput'><tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Gender</th><th>GPA</th><th>Level</th><th>Address</th></tr>");
 
 
         File file = new File(path);
@@ -74,7 +75,6 @@ public class ShowStudents extends HttpServlet {
                 response.getWriter().println("</tr>");
             }
         }
-        out.println("<a href=\"./\"> home page </a>");
-        out.println("</body></html>");
+        out.println("</table></div></body></html>");
     }
 }

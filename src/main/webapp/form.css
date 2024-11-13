@@ -13,9 +13,9 @@ body {
     align-items: center;
     min-height: 100vh;
     background-image: url("background.png");
-    background-size: cover;      /* Cover the entire background */
+    background-size: cover; /* Cover the entire background */
     background-repeat: no-repeat; /* Prevent repeating the image */
-    background-position: center;  /* Center the image */
+    background-position: center; /* Center the image */
 }
 
 /* Form container */
@@ -57,7 +57,10 @@ input[type="text"], input[type="number"], select {
 /* Submit button */
 .submit-btn {
     width: 100%;
-    padding: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    text-decoration: none;
     background-color: #2f79a7;
     color: white;
     border: none;
