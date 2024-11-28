@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -23,36 +24,30 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
 
 @WebServlet(name = "addstudent", value = "/add-student")
 public class AddStudent extends HttpServlet {
     private String path = "C:\\Users\\G-15\\OneDrive\\Documents\\GitHub\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml";
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.sendRedirect("addStudent.html");
     }
 
     void writeXML(Document document) {
-        try (FileOutputStream output =
-                     new FileOutputStream(path)) {
+        try (FileOutputStream output = new FileOutputStream(path)) {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(document);
             StreamResult result = new StreamResult(output);
-
             transformer.transform(source, result);
-        } catch (IOException e) {
+        } catch (IOException | TransformerException e) {
             e.printStackTrace();
-        } catch (TransformerConfigurationException e) {
-            throw new RuntimeException(e);
-        } catch (TransformerException e) {
-            throw new RuntimeException(e);
         }
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, RuntimeException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String studentID = request.getParameter("student-id");
         String firstName = request.getParameter("first-name");
         String lastName = request.getParameter("last-name");
@@ -62,52 +57,76 @@ public class AddStudent extends HttpServlet {
         String address = request.getParameter("address");
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = null;
-        try {
-            builder = factory.newDocumentBuilder();
-        } catch (ParserConfigurationException e) {
-            throw new RuntimeException(e);
-        }
+        DocumentBuilder builder;
         Document document;
 
         try {
+            builder = factory.newDocumentBuilder();
             File file = new File(path);
             document = builder.parse(file);
-        } catch (SAXException e) {
+        } catch (ParserConfigurationException | SAXException e) {
             throw new RuntimeException(e);
         }
+
         Element rootElement = document.getDocumentElement();
-        Element XMLStudent = document.createElement("Student");
-        XMLStudent.setAttribute("ID", studentID);
 
-        Element XMLFirstName = document.createElement("FirstName");
-        XMLFirstName.appendChild(document.createTextNode(firstName));
-        XMLStudent.appendChild(XMLFirstName);
+        NodeList students = rootElement.getElementsByTagName("Student");
+        boolean idExists = false;
+        for (int i = 0; i < students.getLength(); i++) {
+            Node student = students.item(i);
+            if (student.getNodeType() == Node.ELEMENT_NODE) {
+                Element studentElement = (Element) student;
+                String existingID = studentElement.getAttribute("ID");
+                if (existingID.equals(studentID)) {
+                    idExists = true;
+                    break;
+                }
+            }
+        }
 
-        Element XMLLastName = document.createElement("LastName");
-        XMLLastName.appendChild(document.createTextNode(lastName));
-        XMLStudent.appendChild(XMLLastName);
+        if (idExists) {
+            response.setContentType("text/html");
+            try (PrintWriter out = response.getWriter()) {
+                out.println("<html><body>");
+                out.println("<head><link rel=\"stylesheet\" href=\"form.css\"></head>");
+                out.println("<div class=\"form-container\"><a href=\"./\" class=\"submit-btn\"> home page </a>");
+                out.println("<h3>No students with the same ID allowed!</h3>");
+                out.println("</body></html>");
 
-        Element XMLGender = document.createElement("Gender");
-        XMLGender.appendChild(document.createTextNode(gender));
-        XMLStudent.appendChild(XMLGender);
+            }
+        } else {
+            // Add new student details to XML if ID does not exist
+            Element XMLStudent = document.createElement("Student");
+            XMLStudent.setAttribute("ID", studentID);
 
-        Element XMLGPA = document.createElement("GPA");
-        XMLGPA.appendChild(document.createTextNode(gpa));
-        XMLStudent.appendChild(XMLGPA);
+            Element XMLFirstName = document.createElement("FirstName");
+            XMLFirstName.appendChild(document.createTextNode(firstName));
+            XMLStudent.appendChild(XMLFirstName);
 
-        Element XMLLevel = document.createElement("Level");
-        XMLLevel.appendChild(document.createTextNode(level));
-        XMLStudent.appendChild(XMLLevel);
+            Element XMLLastName = document.createElement("LastName");
+            XMLLastName.appendChild(document.createTextNode(lastName));
+            XMLStudent.appendChild(XMLLastName);
 
-        Element XMLAddress = document.createElement("Address");
-        XMLAddress.appendChild(document.createTextNode(address));
-        XMLStudent.appendChild(XMLAddress);
+            Element XMLGender = document.createElement("Gender");
+            XMLGender.appendChild(document.createTextNode(gender));
+            XMLStudent.appendChild(XMLGender);
 
-        rootElement.appendChild(XMLStudent);
-        writeXML(document);
+            Element XMLGPA = document.createElement("GPA");
+            XMLGPA.appendChild(document.createTextNode(gpa));
+            XMLStudent.appendChild(XMLGPA);
 
+            Element XMLLevel = document.createElement("Level");
+            XMLLevel.appendChild(document.createTextNode(level));
+            XMLStudent.appendChild(XMLLevel);
 
-        response.sendRedirect("./add-student");
+            Element XMLAddress = document.createElement("Address");
+            XMLAddress.appendChild(document.createTextNode(address));
+            XMLStudent.appendChild(XMLAddress);
+
+            rootElement.appendChild(XMLStudent);
+            writeXML(document);
+
+            response.sendRedirect("./add-student");
+        }
     }
 }
