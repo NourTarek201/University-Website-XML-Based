@@ -31,13 +31,13 @@
         </select>
 
         <label for="level">Level</label>
-        <input type="number" id="level" name="level" value="${requestScope['level']}" required  min="0" max="7">
+        <input type="number" id="level" name="level" value="${requestScope['level']}" required  min="1" max="7">
 
         <label for="gpa">GPA</label>
         <input type="number" step="0.01" id="gpa" name="gpa" value="${requestScope['gpa']}" required min="0" max="4.0">
 
         <label for="address">Address</label>
-        <input type="text" id="address" name="address" value="${requestScope['address']}" required>
+        <input type="text" id="address" pattern="[A-Za-z]*" name="address" value="${requestScope['address']}" required>
         <button type="submit" class="submit-btn">Submit</button>
     </form>
 </div>
