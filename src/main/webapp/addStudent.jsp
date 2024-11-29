@@ -13,14 +13,14 @@
     <h2>Student Information Form</h2>
     <form action="./${requestScope['action']}" method="post">
         <label for="student-id">Student ID</label>
-        <input type="text" id="student-id" name="student-id" value="${requestScope['student-id']}"
+        <input type="number" id="student-id" name="student-id" value="${requestScope['student-id']}"
         ${requestScope['action'] == 'update-student' ? 'readonly' : ''} required>
 
         <label for="first-name">First Name</label>
-        <input type="text" id="first-name" name="first-name" value="${requestScope['first-name']}" required>
+        <input type="text" id="first-name" pattern="[A-Za-z]*" name="first-name" value="${requestScope['first-name']}" required>
 
         <label for="last-name">Last Name</label>
-        <input type="text" id="last-name" name="last-name" value="${requestScope['last-name']}" required>
+        <input type="text" id="last-name" pattern="[A-Za-z]*" name="last-name" value="${requestScope['last-name']}" required>
 
 
         <label for="gender">Gender</label>
@@ -31,7 +31,7 @@
         </select>
 
         <label for="level">Level</label>
-        <input type="number" id="level" name="level" value="${requestScope['level']}" required>
+        <input type="number" id="level" name="level" value="${requestScope['level']}" required  min="0" max="7">
 
         <label for="gpa">GPA</label>
         <input type="number" step="0.01" id="gpa" name="gpa" value="${requestScope['gpa']}" required min="0" max="4.0">
