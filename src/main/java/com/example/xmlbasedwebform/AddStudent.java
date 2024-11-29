@@ -1,5 +1,6 @@
 package com.example.xmlbasedwebform;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -27,14 +28,17 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "addstudent", value = "/add-student")
 public class AddStudent extends HttpServlet {
-    private String path = "C:\\Users\\G-15\\OneDrive\\Documents\\GitHub\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml";
+    private String path = "D:\\My Faculty Material\\Fourth Year\\First Semester\\Service Oriented Architecture\\Assign1\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("addStudent.html");
+        request.setAttribute("action", "add-student");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("addStudent.jsp");
+        dispatcher.forward(request, response);
+        response.sendRedirect("addStudent.jsp");
     }
 
-    void writeXML(Document document) {
+    public static void writeXML(Document document, String path)  {
         try (FileOutputStream output = new FileOutputStream(path)) {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
@@ -124,7 +128,7 @@ public class AddStudent extends HttpServlet {
             XMLStudent.appendChild(XMLAddress);
 
             rootElement.appendChild(XMLStudent);
-            writeXML(document);
+            writeXML(document, path);
 
             response.sendRedirect("./add-student");
         }

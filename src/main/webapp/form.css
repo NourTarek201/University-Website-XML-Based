@@ -19,13 +19,16 @@ body {
 }
 
 /* Form container */
-.form-container {
+.form-container,  .form-container-table{
     width: 100%;
-    max-width: 500px;
     padding: 2rem;
     background-color: #ffffff;
-    border-radius: 8px;
+    border-radius: 14px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.form-container{
+    max-width: 500px;
+
 }
 
 /* Form title */
@@ -73,6 +76,22 @@ input[type="text"], input[type="number"], select {
 
 .submit-btn:hover {
     background-color: #47afef;
+}
+
+.home-btn{
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #0f3f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.top-left-button:hover {
+    background-color: #45a049;
 }
 
 /* Responsive styling */

@@ -20,14 +20,14 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "showstudents", value = "/show-students")
 public class ShowStudents extends HttpServlet {
-    private String path = "C:\\Users\\G-15\\OneDrive\\Documents\\GitHub\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml";
+    private String path = "D:\\My Faculty Material\\Fourth Year\\First Semester\\Service Oriented Architecture\\Assign1\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
-        out.println("<head><link rel=\"stylesheet\" href=\"form.css\"></head>");
-        out.println("<div class=\"form-container\"><a href=\"./\" class=\"submit-btn\"> home page </a><h2>All Students</h2>");
+        out.println("<head><link rel=\"stylesheet\" href=\"form.css\">  <link rel=\"stylesheet\" href=\"table.css\">\n</head>");
+        out.println("<div class=\"form-container-table\"><a href=\"./\" class=\"submit-btn\"> home page </a><h2>All Students</h2>");
         out.println("<table border='1' id='isoutput'><tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Gender</th><th>GPA</th><th>Level</th><th>Address</th></tr>");
 
 
@@ -64,6 +64,7 @@ public class ShowStudents extends HttpServlet {
                 String level = studentElement.getElementsByTagName("Level").item(0).getTextContent();
                 String address = studentElement.getElementsByTagName("Address").item(0).getTextContent();
 
+
                 response.getWriter().println("<tr>");
                 response.getWriter().println("<td>" + id + "</td>");
                 response.getWriter().println("<td>" + firstName + "</td>");
@@ -72,6 +73,15 @@ public class ShowStudents extends HttpServlet {
                 response.getWriter().println("<td>" + gpa + "</td>");
                 response.getWriter().println("<td>" + level + "</td>");
                 response.getWriter().println("<td>" + address + "</td>");
+//                response.getWriter().println(
+//                        "<td>   <form action=\"./update-student\" method=\"post\">" +
+//                                "<input type=\"hidden\" value=\"" + id + "\" name=\"studentID\">" +
+//                                "<br><br>" +
+//                                "<button type=\"submit\" class=\"submit-btn\">Update</button>" +
+//                                "</form></td>"
+//                );
+                response.getWriter().println("<td> <a href=\"./update-student?id="+id+"\" class=\"submit-btn\">update</a>\n </td>");
+
                 response.getWriter().println("</tr>");
             }
         }
