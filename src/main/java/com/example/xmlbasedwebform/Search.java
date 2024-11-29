@@ -25,9 +25,9 @@ public class Search extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
 
-        String firstNameSearch = request.getParameter("firstName");
-        String gpaSearch = request.getParameter("gpa");
-
+        String search_value = request.getParameter("value");
+        String type = request.getParameter("search");
+        int cnt = 0;
         try {
             File xmlFile = new File(path);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -38,17 +38,22 @@ public class Search extends HttpServlet {
             NodeList studentList = doc.getElementsByTagName("Student");
             PrintWriter out = response.getWriter();
             out.println("<html><body>");
-            out.println("<head><link rel=\"stylesheet\" href=\"form.css\"></head>");
-            out.println("<div class=\"form-container\"><a href=\"./\" class=\"submit-btn\"> home page </a><h2>All Students</h2><table border='1' id='isoutput'><tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Gender</th><th>GPA</th><th>Level</th><th>Address</th></tr>");
+            out.println("<head><link rel=\"stylesheet\" href=\"form.css\"> <link rel=\"stylesheet\" href=\"table.css\"></head>");
+            out.println("<div class=\"form-container-table\"><a href=\"./\" class=\"home-btn\"> Home page </a><h2><h2><table border='1' id='isoutput'><tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Gender</th><th>GPA</th><th>Level</th><th>Address</th></tr>");
 
             boolean studentFound = false;
-
+            String specific="";
             for (int i = 0; i < studentList.getLength(); i++) {
                 Node studentNode = studentList.item(i);
 
                 if (studentNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element studentElement = (Element) studentNode;
-
+                    if(type.equals("ID")){
+                        specific = studentElement.getAttribute("ID");
+                    }
+                    else if(!type.equals("-1")){
+                       specific = studentElement.getElementsByTagName(type).item(0).getTextContent();
+                    }
                     String id = studentElement.getAttribute("ID");
                     String firstName = studentElement.getElementsByTagName("FirstName").item(0).getTextContent();
                     String lastName = studentElement.getElementsByTagName("LastName").item(0).getTextContent();
@@ -57,15 +62,9 @@ public class Search extends HttpServlet {
                     String level = studentElement.getElementsByTagName("Level").item(0).getTextContent();
                     String address = studentElement.getElementsByTagName("Address").item(0).getTextContent();
 
-                    boolean matchesSearch = true;
-                    if (firstNameSearch != null && !firstNameSearch.isEmpty() && !firstName.toLowerCase().contains(firstNameSearch.toLowerCase())) {
-                        matchesSearch = false;
-                    }
-                    if (gpaSearch != null && !gpaSearch.isEmpty() && !gpa.equals(gpaSearch)) {
-                        matchesSearch = false;
-                    }
-
-                    if (matchesSearch) {
+                    if ( (search_value != null || !search_value.isEmpty()) && ( type.equals("-1") ) &&(
+                    search_value.equals(id) || search_value.equals(firstName) || search_value.equals(lastName)
+                    || search_value.equals(gender) || search_value.equals(gpa) || search_value.equals(level) || search_value.equals(address))) {
                         studentFound = true;
                         out.println("<tr>");
                         out.println("<td>" + id + "</td>");
@@ -76,13 +75,32 @@ public class Search extends HttpServlet {
                         out.println("<td>" + level + "</td>");
                         out.println("<td>" + address + "</td>");
                         out.println("</tr>");
+                        cnt++;
                     }
+                    else if(type!= null && !type.isEmpty() && search_value.equals(specific)){
+                        studentFound = true;
+                        out.println("<tr>");
+                        out.println("<td>" + id + "</td>");
+                        out.println("<td>" + firstName + "</td>");
+                        out.println("<td>" + lastName + "</td>");
+                        out.println("<td>" + gender + "</td>");
+                        out.println("<td>" + gpa + "</td>");
+                        out.println("<td>" + level + "</td>");
+                        out.println("<td>" + address + "</td>");
+                        out.println("</tr>");
+                        cnt++;
+                    }
+
+
                 }
             }
             if (!studentFound) {
                 out.println("<tr><td colspan='7'>Student not found</td></tr>");
             }
-            out.println("</table></div></body></html>");
+            out.println("</table></div>" +
+                    "<script>var h2 = document.getElementsByTagName(\"h2\")[0];\n" +
+                    "h2.innerText = \"All Students "+cnt+"\";</script></body></html>");
+
         } catch (Exception e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error processing the request.");

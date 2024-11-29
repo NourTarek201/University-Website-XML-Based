@@ -10,6 +10,7 @@
 body {
     display: flex;
     justify-content: center;
+    flex-direction: column; /* Stack children vertically */
     align-items: center;
     min-height: 100vh;
     background-image: url("background.png");
@@ -25,12 +26,15 @@ body {
     background-color: #ffffff;
     border-radius: 14px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /*margin: 20px auto;*/
+}
+.form-container-table{
+    max-width: 1000px;
 }
 .form-container{
     max-width: 500px;
 
 }
-
 /* Form title */
 .form-container h2 {
     margin-bottom: 1rem;
@@ -57,25 +61,27 @@ input[type="text"], input[type="number"], select {
     font-size: 1rem;
 }
 
-/* Submit button */
 .submit-btn {
     width: 100%;
+    max-width: 300px; /* Set a maximum width for the button */
     padding: 1rem;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
+    margin: 1rem auto; /* Center the button horizontally */
     text-decoration: none;
-    background-color: #2f79a7;
+    background-color: #123B68;
     color: white;
     border: none;
     border-radius: 10px;
-    font-size: 1rem;
+    font-size: 1.4rem;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: block;
+    text-align: center; /* Center the text inside the button */
 }
 
 .submit-btn:hover {
-    background-color: #47afef;
+    background-color: #F3ECEE;
+    color: #E2766B;
 }
 
 .home-btn{
@@ -83,13 +89,20 @@ input[type="text"], input[type="number"], select {
     top: 20px;
     left: 20px;
     padding: 10px 20px;
-    background-color: #0f3f61;
-    color: white;
+    background-color: #FFD700;
+    color: #123B68;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.4rem;
 
+}
+.home-btn:hover{
+    background-color: white;
+    color: #FFD700;
+}
 .top-left-button:hover {
     background-color: #45a049;
 }

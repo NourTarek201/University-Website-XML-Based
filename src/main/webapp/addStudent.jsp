@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="form-container">
-    <a href="./" class="submit-btn">home page</a>
+    <a href="./" class="home-btn">Home page</a>
     <h2>Student Information Form</h2>
     <form action="./${requestScope['action']}" method="post">
         <label for="student-id">Student ID</label>

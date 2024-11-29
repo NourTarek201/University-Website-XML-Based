@@ -93,7 +93,7 @@ public class AddStudent extends HttpServlet {
             try (PrintWriter out = response.getWriter()) {
                 out.println("<html><body>");
                 out.println("<head><link rel=\"stylesheet\" href=\"form.css\"></head>");
-                out.println("<div class=\"form-container\"><a href=\"./\" class=\"submit-btn\"> home page </a>");
+                out.println("<div class=\"form-container\"><a href=\"./\" class=\"home-btn\"> Home page </a>");
                 out.println("<h3>No students with the same ID allowed!</h3>");
                 out.println("</body></html>");
 

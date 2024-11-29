@@ -6,15 +6,24 @@
   <link rel="stylesheet" href="form.css">
 </head>
 <body>
-<a href="./" class="Home-btn">home page</a>
+<a href="./" class="home-btn">Home page</a>
 <div class="form-container">
   <h2>Search Students</h2>
   <form action="./search" method="post">
-    <input type="text" name="firstName" placeholder="Search by First Name..">
+    <select id="search" name="search" >
+      <option value="-1" >Select Filter</option>
+      <option value="ID">ID</option>
+      <option value="FirstName">First Name</option>
+      <option value="LastName" >Last Name</option>
+      <option value="Gender" >Gender</option>
+      <option value="GPA" >GPA</option>
+      <option value="Level" >Level</option>
+      <option value="Address" >Address</option>
+    </select>
+
+    <input type="text" name="value" placeholder="Search by any value.." required>
     <button type="submit" class="submit-btn">Search</button>
 
-    <input type="text" name="gpa" placeholder="Search by GPA..">
-    <button type="submit" class="submit-btn">Search</button>
   </form>
 </div>
 

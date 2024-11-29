@@ -78,7 +78,7 @@ public class DeleteStudent extends HttpServlet {
                 out.println("<p>No student found with ID: " + studentID + ".</p>");
             }
 
-            out.println("<a href=\"./\" class=\"submit-btn\" style=\"display: inline-block; padding: 10px 20px; margin-top: 15px; text-decoration: none; \">Home Page</a>");
+            out.println("<a href=\"./\" class=\"home-btn\" style=\"display: inline-block; padding: 10px 20px; margin-top: 15px; text-decoration: none; \">Home Page</a>");
             out.println("</div></div>");
             out.println("</body></html>");
         } catch (Exception e) {

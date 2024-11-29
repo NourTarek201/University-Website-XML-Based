@@ -27,8 +27,8 @@ public class ShowStudents extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
         out.println("<head><link rel=\"stylesheet\" href=\"form.css\">  <link rel=\"stylesheet\" href=\"table.css\">\n</head>");
-        out.println("<div class=\"form-container-table\"><a href=\"./\" class=\"submit-btn\"> home page </a><h2>All Students</h2>");
-        out.println("<table border='1' id='isoutput'><tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Gender</th><th>GPA</th><th>Level</th><th>Address</th></tr>");
+        out.println("<div class=\"form-container-table\"><a href=\"./\" class=\"home-btn\"> Home page </a><h2>All Students</h2>");
+        out.println("<table border='1' id='isoutput'><tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Gender</th><th>GPA</th><th>Level</th><th>Address</th><th></th></tr>");
 
 
         File file = new File(path);
@@ -73,14 +73,9 @@ public class ShowStudents extends HttpServlet {
                 response.getWriter().println("<td>" + gpa + "</td>");
                 response.getWriter().println("<td>" + level + "</td>");
                 response.getWriter().println("<td>" + address + "</td>");
-//                response.getWriter().println(
-//                        "<td>   <form action=\"./update-student\" method=\"post\">" +
-//                                "<input type=\"hidden\" value=\"" + id + "\" name=\"studentID\">" +
-//                                "<br><br>" +
-//                                "<button type=\"submit\" class=\"submit-btn\">Update</button>" +
-//                                "</form></td>"
-//                );
-                response.getWriter().println("<td> <a href=\"./update-student?id="+id+"\" class=\"submit-btn\">update</a>\n </td>");
+
+
+                response.getWriter().println("<td> <a style=\"font-size: 1rem;\" href=\"./update-student?id="+id+"\" class=\"submit-btn\">update</a>\n </td>");
 
                 response.getWriter().println("</tr>");
             }
