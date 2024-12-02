@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sort Students</title>
+  <link rel="stylesheet" href="form.css">
+</head>
+<body>
+<a href="./" class="home-btn">Home page</a>
+<div class="form-container">
+  <h2>Sort Students</h2>
+  <form action="./sort" method="post">
+    <label for="sort">Sort By:</label>
+    <select id="sort" name="sort">
+      <option value="-1">Select Filter</option>
+      <option value="ID">ID</option>
+      <option value="FirstName">First Name</option>
+      <option value="LastName">Last Name</option>
+      <option value="Gender">Gender</option>
+      <option value="GPA">GPA</option>
+      <option value="Level">Level</option>
+      <option value="Address">Address</option>
+    </select>
+
+    <label for="sort-order">Order:</label>
+    <select id="sort-order" name="order">
+      <option value="-1">Select Order</option>
+      <option value="Asc">Ascending</option>
+      <option value="Des">Descending</option>
+    </select>
+
+    <button type="submit" class="submit-btn">Sort</button>
+  </form>
+</div>
+</body>
+</html>
