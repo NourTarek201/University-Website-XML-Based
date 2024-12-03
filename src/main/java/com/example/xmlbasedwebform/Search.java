@@ -9,14 +9,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Paths;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.*;
 
 @WebServlet(name = "search", value = "/search")
 public class Search extends HttpServlet {
-    private String path = Paths.get(System.getProperty("user.dir")).getParent().toString()+"\\webapps\\XML_Based_Web_Form_war\\university.xml";
+    private String path = "C:\\Users\\G-15\\OneDrive\\Documents\\GitHub\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

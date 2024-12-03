@@ -18,13 +18,11 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Paths;
-
 import com.example.xmlbasedwebform.AddStudent;
 
 @WebServlet(name = "updatestudent", value = "/update-student")
 public class UpdateStudent extends HttpServlet {
-    private String path = Paths.get(System.getProperty("user.dir")).getParent().toString()+"\\webapps\\XML_Based_Web_Form_war\\university.xml";
+    private String path = "D:\\My Faculty Material\\Fourth Year\\First Semester\\Service Oriented Architecture\\Assign1\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

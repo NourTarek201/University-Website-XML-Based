@@ -14,14 +14,12 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.*;
-
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "sort", value = "/sort")
 public class SortStudents extends HttpServlet {
-    private String path = Paths.get(System.getProperty("user.dir")).getParent().toString()+"\\webapps\\XML_Based_Web_Form_war\\university.xml";
+    private String path = "C:\\Users\\G-15\\OneDrive\\Documents\\GitHub\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
