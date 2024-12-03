@@ -17,10 +17,11 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Paths;
 
 @WebServlet(name = "showstudents", value = "/show-students")
 public class ShowStudents extends HttpServlet {
-    private String path = "C:\\Users\\G-15\\OneDrive\\Documents\\GitHub\\XML-Based-Web-Form\\src\\main\\webapp\\university.xml";
+    private String path = Paths.get(System.getProperty("user.dir")).getParent().toString()+"\\webapps\\XML_Based_Web_Form_war\\university.xml";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
