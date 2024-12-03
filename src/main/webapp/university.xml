@@ -1,57 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><University><Student ID="20210118">
-        <FirstName>mohamed</FirstName>
-        <LastName>othman</LastName>
-        <Gender>male</Gender>
-        <GPA>2.1</GPA>
-        <Level>3</Level>
-        <Address>king Fisal ,Giza</Address>
-    </Student><Student ID="265496">
-        <FirstName>gvycyf</FirstName>
-        <LastName>vkjcghjvgc</LastName>
-        <Gender>female</Gender>
-        <GPA>2.3</GPA>
-        <Level>3</Level>
-        <Address>gviugv</Address>
-    </Student><Student ID="20210427">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><University><Student ID="20210427">
         <FirstName>Nour</FirstName>
         <LastName>Tarek</LastName>
         <Gender>female</Gender>
-        <GPA>2.3</GPA>
+        <GPA>2.8</GPA>
         <Level>4</Level>
-        <Address>king Fisal ,Giza</Address>
-    </Student><Student ID="125966">
-        <FirstName>habiba</FirstName>
-        <LastName>iaba</LastName>
-        <Gender>female</Gender>
-        <GPA>2.3</GPA>
-        <Level>4</Level>
-        <Address>hbaofihb</Address>
-    </Student><Student ID="2016333333333333333333"><FirstName>rfgb</FirstName><LastName>thgt</LastName><Gender>female</Gender><GPA>2.87</GPA><Level>7</Level><Address>Ahmed Zewail</Address></Student><Student ID="202022"><FirstName>Nour</FirstName><LastName>Tarek</LastName><Gender>female</Gender><GPA>2.87</GPA><Level>4</Level><Address>Ahmed Zewail</Address></Student><Student ID="101">
-        <FirstName>101</FirstName>
-        <LastName>101</LastName>
-        <Gender>male</Gender>
-        <GPA>3</GPA>
-        <Level>3</Level>
-        <Address>101</Address>
-    </Student><Student ID="5"><FirstName>yousra</FirstName><LastName>ihba</LastName><Gender>female</Gender><GPA>3.6</GPA><Level>4</Level><Address>mainstreet</Address></Student><Student ID="20210119">
-        <FirstName>salma</FirstName>
-        <LastName>mohamed</LastName>
-        <Gender>female</Gender>
-        <GPA>3.99</GPA>
-        <Level>3</Level>
-        <Address>king Fisal ,Giza</Address>
-    </Student><Student ID="852">
-        <FirstName>ihab</FirstName>
-        <LastName>Ahmed</LastName>
-        <Gender>male</Gender>
-        <GPA>3.99</GPA>
-        <Level>3</Level>
-        <Address>haram</Address>
-    </Student><Student ID="20210050">
-        <FirstName>Adhom</FirstName>
-        <LastName>Shawkya</LastName>
-        <Gender>female</Gender>
-        <GPA>4.00</GPA>
-        <Level>5</Level>
-        <Address>gege</Address>
-    </Student></University>
+        <Address>Faisal</Address>
+    </Student><Student ID="20210119"><FirstName>Habiba</FirstName><LastName>Ihab</LastName><Gender>female</Gender><GPA>3.3</GPA><Level>3</Level><Address>Haram Giza</Address></Student><Student ID="20210050"><FirstName>Adham</FirstName><LastName>Khaled</LastName><Gender>male</Gender><GPA>3.8</GPA><Level>2</Level><Address>Dokki</Address></Student><Student ID="2020"><FirstName>Shawky</FirstName><LastName>Ibrahim</LastName><Gender>male</Gender><GPA>3.2</GPA><Level>4</Level><Address>Zamalek</Address></Student><Student ID="2044"><FirstName>Nour</FirstName><LastName>Wael</LastName><Gender>female</Gender><GPA>2.2</GPA><Level>2</Level><Address>Obour</Address></Student><Student ID="4040"><FirstName>Maram</FirstName><LastName>Wael</LastName><Gender>female</Gender><GPA>4</GPA><Level>1</Level><Address>Madinty</Address></Student><Student ID="20210030"><FirstName>Hesham</FirstName><LastName>Ahmed</LastName><Gender>male</Gender><GPA>2.87</GPA><Level>3</Level><Address>Ahmed Zewail</Address></Student></University>
