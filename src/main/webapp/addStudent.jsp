@@ -17,10 +17,10 @@
         ${requestScope['action'] == 'update-student' ? 'readonly' : ''} required>
 
         <label for="first-name">First Name</label>
-        <input type="text" id="first-name" pattern="[A-Za-z]*" name="first-name" value="${requestScope['first-name']}" required>
+        <input type="text" id="first-name" pattern="[A-Za-z\s]*" name="first-name" value="${requestScope['first-name']}" required>
 
         <label for="last-name">Last Name</label>
-        <input type="text" id="last-name" pattern="[A-Za-z]*" name="last-name" value="${requestScope['last-name']}" required>
+        <input type="text" id="last-name" pattern="[A-Za-z\s]*" name="last-name" value="${requestScope['last-name']}" required>
 
 
         <label for="gender">Gender</label>
@@ -37,7 +37,7 @@
         <input type="number" step="0.01" id="gpa" name="gpa" value="${requestScope['gpa']}" required min="0" max="4.0">
 
         <label for="address">Address</label>
-        <input type="text" id="address" pattern="[A-Za-z]*" name="address" value="${requestScope['address']}" required>
+        <input type="text" id="address" pattern="[A-Za-z\s]*" name="address" value="${requestScope['address']}" required>
         <button type="submit" class="submit-btn">Submit</button>
     </form>
 </div>
